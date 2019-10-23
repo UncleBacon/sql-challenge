@@ -1,3 +1,4 @@
+
 -- 1. List the following details of each employee: employee number, last name, first name, gender, and salary.
 select e.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name", e.gender as "Gender", s.salary as "Salary" 
 from employees e
@@ -17,15 +18,15 @@ order by "Hire Date"
 select dep.dept_no, dep.dept_name,depm.emp_no,e.last_name,e.first_name,depm.from_date,depm.to_date
 from dept_manager depm
 inner join employees e on (e.emp_no = depm.emp_no)
-inner join "Departments" dep on (depm.dept_no = dep.dept_no)
+inner join departments dep on (depm.dept_no = dep.dept_no)
 limit 10
 
 -- 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
 
-select e.emp_no as "Employee Number", e.last_name as "Last Name",e.first_name as "First Name", "Departments".dept_name as "Department"
+select e.emp_no as "Employee Number", e.last_name as "Last Name",e.first_name as "First Name", departments.dept_name as "Department"
 from employees e
 inner join dept_manager d on (d.emp_no = e.emp_no)
-inner join "Departments" on ("Departments".dept_no = d.dept_no)
+inner join departments on (departments.dept_no = d.dept_no)
 limit 10
 
 -- 5. List all employees whose first name is "Hercules" and last names begin with "B."
@@ -36,24 +37,22 @@ and
 last_name like 'B%'
 limit 10
 
-select * from Departments
-
 
 -- 6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
-select d.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name","Departments".dept_name as "Department"
+select d.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name",departments.dept_name as "Department"
 from dept_emp as d
 inner join employees as e on (d.emp_no = e.emp_no)
-inner join "Departments" on (d.dept_no = "Departments".dept_no)
-where "Departments".dept_name = 'Sales'
+inner join departments on (d.dept_no = departments.dept_no)
+where dDepartments.dept_name = 'Sales'
 
 
 -- 7. List all employees in the Sales and Development departments, including their employee number, last name, 
 -- first name, and department name.
-select d.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name","Departments".dept_name as "Department"
+select d.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name",departments.dept_name as "Department"
 from dept_emp as d
 inner join employees as e on (d.emp_no = e.emp_no)
-inner join "Departments" on (d.dept_no = "Departments".dept_no)
-where "Departments".dept_name = 'Sales' or "Departments".dept_name = 'Development' 
+inner join departments on (d.dept_no = departments.dept_no)
+where departments.dept_name = 'Sales' or departments.dept_name = 'Development' 
 limit 10
 
 
